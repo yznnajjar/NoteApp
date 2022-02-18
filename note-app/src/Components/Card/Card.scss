@@ -48,6 +48,25 @@
 
     &__title{
       font-size:20px;
+
+      &__red{
+        color:#F16868;
+      }
+      &__blue{
+        color:#36AAE1;
+      }
+      &__aqua{
+        color :#38D4D0
+      }
+      &__green{
+        color:#9BDB82;
+      }
+      &__orange{
+        color:#FF9A7F
+      }
+      &__purple{
+        color:#D183DB;
+      }
     }
  }
  .card--content{

@@ -13,7 +13,15 @@ const Card = (props) =>{
   const showCardTitle = useMemo(()=>{
     return (
       <div className="card--header">
-        <span className="card--header__title">{props.title}</span>
+        <span 
+        className={classnames("card--header__title",{
+          "card--header__title__red"    : props.color === RED_COLOR,
+          "card--header__title__blue"   : props.color === BLUE_COLOR, 
+          "card--header__title__aqua"   : props.color === AQUA_COLOR,
+          "card--header__title__green"  : props.color === GREEN_COLOR,
+          "card--header__title__orange" : props.color === ORANGE_COLOR,
+          "card--header__title__purple" : props.color === PURPLE_COLOR
+        })}>{props.title}</span>
         <div>
           <img 
             src={EditIcon}

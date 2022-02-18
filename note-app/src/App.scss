@@ -1,0 +1,80 @@
+.app{
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+
+  .note--text{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-bottom: 15px;
+    &__label{
+      width: 520px;;
+      align-self: center;
+      margin-bottom: 4px;
+      color:#afadad;
+    }
+
+    &__input-field{
+      box-shadow: 0px 2px 2px 1px #afadad;
+      align-self: center;
+      border:1px solid red;
+      width:500px;
+      height: 35px;
+      border-radius: 5px;
+      border:2px solid #E7E7E7;
+      caret-color:#30B7F4;
+      font-size:15px;
+      font-weight: 500;
+      padding-inline:10px;
+      background-color: #F8F8F8;
+    }
+  }
+
+  .note--color{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-bottom: 40px;
+    &__label{
+      width: 520px;;
+      align-self: center;
+      margin-bottom: 4px;
+      color:#afadad;
+    }
+
+    &__select{
+      border:2px solid #E7E7E7;
+      box-shadow: 0px 2px 2px 1px #afadad;
+      align-self: center;
+      width:530px;
+      height: 40px;
+      border-radius: 5px;
+      padding-inline: 10px;
+      font-size: medium;
+      font-weight: 500;
+    }
+  }
+  .save--note{
+    display: block;
+    margin: auto;
+    width:120px;
+    height: 35px;
+    border-radius: 3px;
+    background-color: #30B7F4;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    border:none;
+  }
+
+  .all--cards{
+    width: 80%;
+    margin: auto;
+    gap: 15px;
+    padding-inline: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, calc(100%/3));
+  }
+
+}

@@ -29,8 +29,6 @@ const App = () => {
     setCardsInfo((prevArr) => [...prevArr, { ...prepareData }]);
   }, [noteText, colorSelected ,cardsInfo]);
 
-  
-
   const showNoteText = useMemo(() => {
     return (
       <div className="note--text">
@@ -76,9 +74,9 @@ const App = () => {
   }, [colorSelected, noteText]);
 
   const onEditClick = useCallback((id) => {
-      setEditClickedIndex(id);
-      setIsEditClicked((prev) => !prev);
-    },[isEditClicked, editClickedIndex]);
+    setEditClickedIndex(id);
+    setIsEditClicked((prev) => !prev);
+  },[isEditClicked, editClickedIndex]);
 
   const onDeleteClick = useCallback((id) => {
    setCardsInfo(prevArr => prevArr.filter(item => item.id !== id));

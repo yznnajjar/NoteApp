@@ -71,7 +71,6 @@ const Card = (props) =>{
         "card--container__purple" : props.color === PURPLE_COLOR
       })}
     >
-       
       {showCardTitle}
       {showCardContent}
       {showCardFooter}

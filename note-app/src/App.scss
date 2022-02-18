@@ -2,6 +2,7 @@
   height: 100vh;
   width: 100%;
   overflow-y: auto;
+  margin-top:10%;
 
   .note--text{
     display: flex;
@@ -69,9 +70,11 @@
   }
 
   .all--cards{
+    padding-top:100px;
     width: 80%;
+    height: 20%;
     margin: auto;
-    gap: 15px;
+    gap:20px;
     padding-inline: 10px;
     display: grid;
     grid-template-columns: repeat(3, calc(100%/3));

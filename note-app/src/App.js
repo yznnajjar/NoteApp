@@ -13,23 +13,23 @@ const App = () => {
   const [cardsInfo, setCardsInfo] = useState([]);
   const [editClickedIndex, setEditClickedIndex] = useState("");
 
-  const handleNoteTextChange = useCallback(
-    (value) => {
-      setNoteText(value);
-    },
-    [noteText]
-  );
+  const handleNoteTextChange = useCallback((value) => {
+    setNoteText(value);
+  },[noteText]);
 
   const handleAddNoteClicked = useCallback(() => {
     const prepareData = {
       content: noteText,
       color: colorSelected,
       date: moment(Date.now()).format("DD MMM, h:mm"),
+      id : Math.round(Math.random() * 1000)
     };
-    console.log({ prepareData });
+
 
     setCardsInfo((prevArr) => [...prevArr, { ...prepareData }]);
-  }, [noteText, colorSelected]);
+  }, [noteText, colorSelected ,cardsInfo]);
+
+  
 
   const showNoteText = useMemo(() => {
     return (
@@ -51,45 +51,44 @@ const App = () => {
         <span className="note--color__label">Note Color</span>
         <select
           className="note--color__select"
-          onClick={(e) => setColorSelected(e.target.value)}
+          onChange={(e) => setColorSelected(e.target.value)}
         >
           {colors.map((color, index) => (
-            <option key={index} value={color.color}>
+            <option 
+              key={index}
+              value={color.color}
+            >
               {color.color}
             </option>
           ))}
         </select>
       </div>
     );
-  }, [colorSelected, noteText]);
+  }, []);
+
 
   const showAddNoteButton = useMemo(() => {
     return (
-      <button className="save--note" onClick={() => handleAddNoteClicked()}>
+      <button className="save--note" onClick={handleAddNoteClicked}>
         ADD NOTE
       </button>
     );
   }, [colorSelected, noteText]);
 
-  const onEditClick = useCallback(
-    (index) => {
-      console.log("onEditClick", {});
-      setEditClickedIndex(index);
+  const onEditClick = useCallback((id) => {
+      setEditClickedIndex(id);
       setIsEditClicked((prev) => !prev);
-    },
-    [isEditClicked, editClickedIndex]
-  );
+    },[isEditClicked, editClickedIndex]);
 
-  const onDeleteClick = useCallback((index) => {
-    cardsInfo.split(index, 1);
-    setCardsInfo(cardsInfo);
-  }, []);
+  const onDeleteClick = useCallback((id) => {
+   setCardsInfo(prevArr => prevArr.filter(item => item.id !== id));
+  },[]);
 
   const showCards = useMemo(() => {
     return cardsInfo.map((card, index) => {
       return (
         <Card
-          index={index}
+          id={card.id}
           content={card.content}
           color={card.color}
           title={`Note ${index + 1}`}
@@ -100,10 +99,11 @@ const App = () => {
           editClickedIndex={editClickedIndex}
           handleNoteTextChange={handleNoteTextChange}
           isEditClicked={isEditClicked}
+          editClickedIndex={editClickedIndex}
         />
       );
     });
-  }, [cardsInfo.length, isEditClicked, noteText]);
+  }, [cardsInfo, isEditClicked]);
 
   return (
     <div className="app">

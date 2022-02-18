@@ -35,9 +35,10 @@ const Card = (props) =>{
       return (
         <textarea
           className="card--editiable"
-          value={props.content}
           onChange={e=>props.handleNoteTextChange(e.target.value)}
-        />
+        >
+          {props.content}
+          </textarea>
       )
     }else {
       return (
@@ -46,6 +47,7 @@ const Card = (props) =>{
         </div>
       )
     }
+
     
   },[props.id, props.isEditClicked, props.id]);
 

@@ -1,5 +1,5 @@
 .card--container{
-  height: 100%;
+  height: fit-content;
   width: 100%;
   margin:auto;
   background-color: hsl(0deg 0% 96%);
@@ -72,7 +72,7 @@
     font-weight: 700;
     font-size:13px;
     color:#B6B6B6;
-    padding-top:10px;
+    padding-block:10px;
 
   }
 }

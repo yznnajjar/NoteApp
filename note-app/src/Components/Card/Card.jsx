@@ -1,15 +1,14 @@
 import React,{useMemo} from "react";
 import classnames from 'classnames';
+//Import Helpers
+import { AQUA_COLOR, BLUE_COLOR, GREEN_COLOR, ORANGE_COLOR, PURPLE_COLOR, RED_COLOR } from "../../lib/constant";
 //Import Img
 import DeleteIcon from '../../assest/img/delete.png'
 import EditIcon from '../../assest/img/edit.png'
 //Import Style
 import './Card.scss';
-import { AQUA_COLOR, BLUE_COLOR, GREEN_COLOR, ORANGE_COLOR, PURPLE_COLOR, RED_COLOR } from "../../lib/constant";
-import { useCallback } from "react";
 
 const Card = (props) =>{
-  console.log({props},"CARD");
 
   const showCardTitle = useMemo(()=>{
     return (
@@ -19,24 +18,23 @@ const Card = (props) =>{
           <img 
             src={EditIcon}
             className="edit-icon"
-            onClick={()=>props.onEditClick(props.index)}
+            onClick={()=>props.onEditClick(props.id)}
           />
           <img
             src={DeleteIcon}
             className="delete-icon"
-            onClick={()=>props.onDeleteClick(props.index)}
+            onClick={()=>props.onDeleteClick(props.id)}
           />
         </div>
       </div>
     )
-  },[props.index]);
+  },[props.content, props.id]);
 
   const showCardContent = useMemo(()=>{
-    if(props.index === props.editClickedIndex && props.isEditClicked){
+    if(props.id === props.editClickedIndex && props.isEditClicked){
       return (
         <textarea
           className="card--editiable"
-          style={{border:"1px solid red",marginInline:"15px", height:"30%",width:"92%"}}
           value={props.content}
           onChange={e=>props.handleNoteTextChange(e.target.value)}
         />
@@ -49,7 +47,7 @@ const Card = (props) =>{
       )
     }
     
-  },[props.content, props.isEditClicked, props.index]);
+  },[props.id, props.isEditClicked, props.id]);
 
   const showCardFooter = useMemo(()=>{
     return (
@@ -57,9 +55,7 @@ const Card = (props) =>{
         <span>{props.date}</span>
       </div>
     )
-  },[props.date]);
-
-
+  },[props.content]);
  
 
   return (
